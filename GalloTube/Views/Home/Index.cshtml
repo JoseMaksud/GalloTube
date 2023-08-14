@@ -1,0 +1,31 @@
+﻿@model List<GalloTube.Models.Video>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="album py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">GalloTube</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+        @foreach (Video video in Model)
+        {            
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" width="100%" height="400"
+                    src="@video.Thumbnail">
+                    <div class="card-body">
+                        <p class="card-text text-center">@video.Name</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-body-secondary">@video.Duration</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</div>
