@@ -6,8 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddTransient<IVideoTagRepository, VideoTagRepository>();
 builder.Services.AddTransient<ITagRepository, TagRepository>();
 builder.Services.AddTransient<IVideoRepository, VideoRepository>();
+
 
 var app = builder.Build();
 
