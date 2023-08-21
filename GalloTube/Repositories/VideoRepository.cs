@@ -8,6 +8,12 @@ namespace GalloTube.Repositories;
 public class VideoRepository : IVideoRepository
 {
     readonly string connectionString = "server=localhost;port=3306;database=GalloTubedb;uid=root;pwd=''";
+    readonly IVideoTagRepository _videoTagRepository;
+
+    public VideoRepository(IVideoTagRepository videoTagRepository)
+    {
+        _videoTagRepository = videoTagRepository;
+    }
 
     public void Create(Video model)
     {
@@ -132,5 +138,21 @@ public class VideoRepository : IVideoRepository
         connection.Open();
         command.ExecuteNonQuery();
         connection.Close();
+    }
+    public List<Video> ReadAllDetailed()
+    {
+        List<Video> Videos = ReadAll();
+        foreach (Video video in Videos)
+        {
+            video.Tags = _videoTagRepository.ReadTagsByVideo(video.Id);
+        }
+        return Videos;
+    }
+
+    public Video ReadByIdDetailed(int id)
+    {
+        Video video = ReadById(id);
+        video.Tags = _videoTagRepository.ReadTagsByVideo(video.Id);
+        return video;
     }
 }

@@ -19,8 +19,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var videos = _videoRepository.ReadAll();
+        var videos = _videoRepository.ReadAllDetailed();
         return View(videos);
+    }
+
+    public IActionResult Video(int id)
+    {
+        var video  = _videoRepository.ReadByIdDetailed(id);
+        return View(video);
     }
 
     public IActionResult Privacy()
