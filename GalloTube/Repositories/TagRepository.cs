@@ -55,7 +55,7 @@ public class TagRepository : ITagRepository
         {
             Tag tag = new()
             {
-                Id = reader.GetByte("id"),
+                Id = reader.GetInt32("id"),
                 Name = reader.GetString("name")
             };
             tags.Add(tag);
@@ -81,7 +81,7 @@ public class TagRepository : ITagRepository
         {
             Tag tag = new()
             {
-                Id = reader.GetByte("id"),
+                Id = reader.GetInt32("id"),
                 Name = reader.GetString("name")
             };
             connection.Close();

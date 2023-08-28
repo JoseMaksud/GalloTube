@@ -7,7 +7,7 @@ public class Tag
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public byte Id { get; set; }
+    public int Id { get; set; }
     
     [Display(Name = "Nome")]
     [Required(ErrorMessage = "O nome do Gênero é obrigatório")]

@@ -27,7 +27,7 @@ Instagram: http://www.instagram.com/taylornation
 Tumblr: http://taylornation.tumblr.com
 Twitter: http://www.twitter.com/taylornation13", 
 
-"2014-11-10", 04, "img//videos//01.jpg", "https://youtu.be/e-ORhEE9VVg");
+"2014-11-10 00:21:21", 04, "\\img\\videos\\01.jpg", "https://youtu.be/e-ORhEE9VVg");
 
 INSERT INTO VideoTag VALUES
 (1, 4);

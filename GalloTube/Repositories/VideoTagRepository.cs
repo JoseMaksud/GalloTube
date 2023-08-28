@@ -9,7 +9,7 @@ public class VideoTagRepository : IVideoTagRepository
 {
     readonly string connectionString = "server=localhost;port=3306;database=GalloTubedb;uid=root;pwd=''";
 
-    public void Create(int VideoId, byte TagId)
+    public void Create(int VideoId, int TagId)
     {
         MySqlConnection connection = new(connectionString);
         string sql = "insert into VideoTag(VideoId, TagId) values (@VideId, @TagId)";
@@ -25,7 +25,7 @@ public class VideoTagRepository : IVideoTagRepository
         connection.Close();
     }
 
-    public void Delete(int VideoId, byte TagId)
+    public void Delete(int VideoId, int TagId)
     {
         MySqlConnection connection = new(connectionString);
         string sql = "delete from VideoTag where VideoId = @VideoId and TagId = @TagId";
@@ -74,7 +74,7 @@ public class VideoTagRepository : IVideoTagRepository
         {
             Tag tag = new()
             {
-                Id = reader.GetByte("id"),
+                Id = reader.GetInt32("id"),
                 Name = reader.GetString("name")
             };
             tags.Add(tag);
@@ -100,7 +100,7 @@ public class VideoTagRepository : IVideoTagRepository
             VideoTag videoTag = new()
             {
                 VideoId = reader.GetInt32("VideoId"),
-                TagId = reader.GetByte("TagId")
+                TagId = reader.GetInt32("TagId")
             };
             videoTags.Add(videoTag);
         }
@@ -108,7 +108,7 @@ public class VideoTagRepository : IVideoTagRepository
         return videoTags;
     }
 
-    public List<Video> ReadVideosByTag(byte TagId)
+    public List<Video> ReadVideosByTag(int TagId)
     {
         MySqlConnection connection = new(connectionString);
         string sql = "select * from video where id in "
